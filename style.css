@@ -10,7 +10,6 @@ body {
     color: #fff;
 }
 
-/* TOP BAR */
 
 .top-bar {
     background: #2b094e;
@@ -65,7 +64,7 @@ header {
     font-size: 18px;
 }
 
-/* logo LVD thành một khối chữ tròn */
+
 .logo-mark::before {
     content: "LVD";
 }
@@ -123,7 +122,6 @@ nav a.active::after {
     cursor: pointer;
 }
 
-/* HERO */
 
 .hero {
     position: relative;
@@ -177,7 +175,7 @@ nav a.active::after {
     font-size: 14px;
 }
 
-/* CATEGORY BAR */
+
 
 .category-bar {
     background: #fff;
@@ -209,7 +207,7 @@ nav a.active::after {
     color: #f57c00;
 }
 
-/* CONTENT SECTIONS */
+
 
 .section {
     padding: 20px 40px 60px;
@@ -229,7 +227,7 @@ nav a.active::after {
     margin-bottom: 14px;
 }
 
-/* CARDS */
+
 
 .card-grid {
     display: grid;
@@ -265,7 +263,7 @@ nav a.active::after {
     margin-bottom: 8px;
 }
 
-/* FORMS (login, register, checkout, contact) */
+
 
 .form-wrapper {
     min-height: 70vh;
@@ -336,7 +334,7 @@ nav a.active::after {
     font-size: 14px;
 }
 
-/* FOOTER */
+
 
 footer {
     background: #130825;
@@ -346,7 +344,7 @@ footer {
     opacity: .8;
 }
 
-/* RESPONSIVE */
+
 
 @media (max-width: 768px) {
     header,
@@ -393,12 +391,12 @@ footer {
 .phone {
     opacity: .9;
 }
-/* ========== MODAL CHUNG ========== */
+
 .modal-overlay {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.55);
-    display: none; /* lúc đầu ẩn */
+    display: none; 
     justify-content: center;
     align-items: center;
     z-index: 9999;
@@ -441,7 +439,6 @@ footer {
     opacity: 1;
 }
 
-/* Form trong modal khách hàng */
 .modal .form-group label {
     font-size: 13px;
     margin-bottom: 4px;
@@ -457,7 +454,7 @@ footer {
     font-size: 13px;
 }
 
-/* nút trong modal */
+
 .modal .btn-row {
     margin-top: 15px;
     display: flex;
@@ -479,7 +476,7 @@ footer {
     color: #ffb347;
 }
 
-/* ========== NÚT HỖ TRỢ NỔI ========== */
+
 .support-floating {
     position: fixed;
     left: 16px;
@@ -504,7 +501,7 @@ footer {
     font-size: 13px;
     font-weight: 600;
 }
-/* ===== USER PILL SAU KHI ĐĂNG NHẬP ===== */
+
 
 .user-area {
     position: relative;
@@ -548,7 +545,6 @@ footer {
     font-weight: 600;
 }
 
-/* MENU NHỎ DROPDOWN */
 .user-menu {
     position: absolute;
     right: 0;
@@ -584,4 +580,5 @@ footer {
     margin-bottom: 10px;
     border-radius: 0 0 8px 8px;
 }
+
 
