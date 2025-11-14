@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title> GROUP - Dự án</title>
-    <link rel="stylesheet" href="style11.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -43,9 +43,8 @@ fetch("header.html")
                 <div class="card-title">Văn Duy Riverside</div>
                 <div class="card-meta">Căn hộ – Từ 2.5 tỷ/căn</div>
                 <p>Thanh toán linh hoạt, hỗ trợ vay lên đến 70%.</p>
-               <button class="btn-primary btn-deposit" data-project="Văn Duy Riverside">
-    ĐẶT CỌC NGAY
-</button>
+              <button class="btn-primary" onclick="datCoc('Văn Duy Riverside')">Đặt cọc ngay</button>
+
             </div>
         </div>
 
@@ -185,4 +184,23 @@ document.addEventListener("DOMContentLoaded", function () {
 </body>
 </html>
 <script src="header.js"></script>
+<script>
+function datCoc(projectName) {
+    let price = prompt("Nhập số tiền đặt cọc:");
+
+    if (!price) return;
+
+    let deposits = JSON.parse(localStorage.getItem("lvdDeposits") || "[]");
+
+    deposits.push({
+        project: projectName,
+        amount : price,
+        date   : new Date().toLocaleString()
+    });
+
+    localStorage.setItem("lvdDeposits", JSON.stringify(deposits));
+
+    alert("Đặt cọc thành công!");
+}
+</script>
 

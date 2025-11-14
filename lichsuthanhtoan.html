@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Lịch sử thanh toán</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<div id="header-container"></div>
+
+<script>
+fetch("header.html")
+.then(res => res.text())
+.then(data => document.getElementById("header-container").innerHTML = data);
+</script>
+
+<section class="section">
+    <h2>Lịch sử thanh toán</h2>
+    <div id="paymentList" style="margin-top:20px;"></div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    let list = localStorage.getItem("lvdPayments");
+    let area = document.getElementById("paymentList");
+
+    if (!list) {
+        area.innerHTML = "<p>Chưa có thanh toán nào.</p>";
+        return;
+    }
+
+    let arr = JSON.parse(list);
+    area.innerHTML = arr.map(p => `
+        <div class="card" style="padding:15px;margin-bottom:10px;">
+            <b>Dự án:</b> ${p.project} <br>
+            <b>Số tiền:</b> ${p.amount} VNĐ <br>
+            <b>Ngày:</b> ${p.date}
+        </div>
+    `).join("");
+});
+</script>
+
+</body>
+</html>
