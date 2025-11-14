@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Lịch sử thanh toán - LVD GROUP</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <!-- copy nguyên header của các trang khác vào đây -->
+</header>
+
+<main class="section">
+    <h2 class="section-title">LỊCH SỬ ĐẶT CỌC / THANH TOÁN</h2>
+
+    <div id="historyEmpty" style="text-align:center; margin-top:20px; display:none;">
+        Chưa có giao dịch nào.
+    </div>
+
+    <div class="history-table-wrapper">
+        <table class="history-table">
+            <thead>
+                <tr>
+                    <th>Dự án</th>
+                    <th>Khách hàng</th>
+                    <th>Số tiền đặt cọc (VNĐ)</th>
+                    <th>Phương thức</th>
+                    <th>CMND/CCCD</th>
+                    <th>Thời gian</th>
+                </tr>
+            </thead>
+            <tbody id="historyBody">
+                <!-- JS sẽ đổ dữ liệu vào đây -->
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<footer>
+    <!-- copy footer cũ -->
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const bodyEl   = document.getElementById("historyBody");
+    const emptyEl  = document.getElementById("historyEmpty");
+
+    let history = [];
+    try {
+        history = JSON.parse(localStorage.getItem("lvdHistory") || "[]");
+    } catch (e) {
+        history = [];
+    }
+
+    if (!history.length) {
+        emptyEl.style.display = "block";
+        return;
+    }
+
+    history.forEach(function (item) {
+        const tr = document.createElement("tr");
+
+        tr.innerHTML = `
+            <td>${item.projectName || ""}</td>
+            <td>${item.customer || ""}</td>
+            <td>${item.amount || ""}</td>
+            <td>${item.method || ""}</td>
+            <td>${item.cmnd || ""}</td>
+            <td>${item.time || ""}</td>
+        `;
+
+        bodyEl.appendChild(tr);
+    });
+});
+</script>
+
+</body>
+</html>

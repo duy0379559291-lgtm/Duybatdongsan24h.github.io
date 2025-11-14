@@ -16,27 +16,16 @@
     </div>
 </div>
 
-<header>
-   <div class="logo">
-    <span class="logo-text">LVD GROUP</span>
-</div>
+<div id="header-container"></div>
 
-    <nav>
-         <ul>
-                <li><a href="trangchu.html" class="active">Trang chủ</a></li>
-                <li><a href="gioithieu.html">Giới thiệu</a></li>
-                <li><a href="duan.html">Dự án</a></li>
-                <li><a href="tintuc.html">Tin tức</a></li>
-                <li><a href="lienhe.html">Liên hệ</a></li>
-            </ul>
-    </nav>
+<script>
+fetch("header.html")
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("header-container").innerHTML = data;
+    });
+</script>
 
-    <div class="header-right">
-        <a href="dangnhap.html">Đăng nhập</a> |
-        <a href="dangky.html">Đăng ký</a>
-        <span class="search-icon">&#128269;</span>
-    </div>
-</header>
 
 <section class="hero">
     <div class="hero-inner">
@@ -81,3 +70,4 @@
 
 </body>
 </html>
+<script src="header.js"></script>

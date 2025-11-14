@@ -16,27 +16,15 @@
     </div>
 </div>
 
-<header>
-    <div class="logo">
-    <span class="logo-text">LVD GROUP</span>
-</div>
+<div id="header-container"></div>
 
-    <nav>
-         <ul>
-                <li><a href="trangchu.html" class="active">Trang chủ</a></li>
-                <li><a href="gioithieu.html">Giới thiệu</a></li>
-                <li><a href="duan.html">Dự án</a></li>
-                <li><a href="tintuc.html">Tin tức</a></li>
-                <li><a href="lienhe.html">Liên hệ</a></li>
-            </ul>
-    </nav>
-
-    <div class="header-right">
-        <a href="dangnhap.html">Đăng nhập</a> |
-        <a href="dangky.html">Đăng ký</a>
-        <span class="search-icon">&#128269;</span>
-    </div>
-</header>
+<script>
+fetch("header.html")
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("header-container").innerHTML = data;
+    });
+</script>
 
 <section class="section">
     <h2>Thanh toán / Đặt cọc</h2>
@@ -46,6 +34,8 @@
 <form id="checkoutForm">
     <div class="form-group">
         <label>Tên dự án</label>
+        <span id="checkoutProjectName">Dự án</span>
+
         <input type="text" id="projectName" value="Văn Duy Riverside">
     </div>
 
@@ -133,6 +123,65 @@
         window.location.href = "trangchu.html";
     });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const btn = document.getElementById("btnConfirmPayment");
+    if (!btn) return;
+
+    btn.addEventListener("click", function (e) {
+        e.preventDefault(); // chặn submit form nếu có
+
+        // Lấy thông tin trên form
+        const projectNameEl = document.getElementById("checkoutProjectName");
+        const amountEl      = document.getElementById("depositAmount");
+        const nameEl        = document.getElementById("customerName");
+        const idEl          = document.getElementById("customerId");
+        const methodEl      = document.getElementById("paymentMethod");
+
+        const projectName = projectNameEl ? projectNameEl.textContent.trim() : "";
+        const amount      = amountEl ? amountEl.value.trim() : "";
+        const customer    = nameEl ? nameEl.value.trim() : "";
+        const cmnd        = idEl ? idEl.value.trim() : "";
+        const method      = methodEl ? methodEl.value : "";
+
+        if (!projectName || !amount || !customer) {
+            alert("Vui lòng nhập đầy đủ thông tin bắt buộc.");
+            return;
+        }
+
+        // Tạo 1 bản ghi lịch sử
+        const record = {
+            projectName: projectName,
+            amount: amount,
+            customer: customer,
+            cmnd: cmnd,
+            method: method,
+            time: new Date().toLocaleString("vi-VN")
+        };
+
+        // Lấy lịch sử cũ trong localStorage
+        let history = [];
+        try {
+            history = JSON.parse(localStorage.getItem("lvdHistory") || "[]");
+        } catch (e) {
+            history = [];
+        }
+
+        // Thêm bản ghi mới
+        history.push(record);
+
+        // Lưu lại
+        localStorage.setItem("lvdHistory", JSON.stringify(history));
+
+        alert("Xác nhận thanh toán / đặt cọc thành công!");
+
+        // Chuyển đến trang lịch sử
+        window.location.href = "lichsu.html";
+    });
+});
+</script>
+
 
 </body>
 </html>
+<script src="header.js"></script>

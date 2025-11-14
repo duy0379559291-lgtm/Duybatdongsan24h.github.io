@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title> GROUP - Trang chủ</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+   
+    <div class="top-bar">
+        <div>524107248</div>
+        <div>
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">YouTube</a>
+        </div>
+    </div>
+
+
+
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-dribbble"></i></a>
+        <a href="#"><i class="fab fa-behance"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+</div>
+
+    <div id="header-container"></div>
+
+<script>
+fetch("header.html")
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("header-container").innerHTML = data;
+    });
+</script>
+
+
+ 
+    <section class="hero">
+        <div class="hero-inner">
+            <h1 class="hero-title">Văn Duy</h1>
+            
+            <p class="hero-subtitle">Khu đô thị chuẩn nghỉ dưỡng – Đầu tư an toàn, sinh lời bền vững.</p>
+            <a href="duan.html">
+                <button class="btn-primary">Khám phá ngay</button>
+            </a>
+        </div>
+    </section>
+
+    
+    <div class="category-bar">
+        <div class="category-item active">
+            <span class="icon">&#128188;</span>
+            <span>Căn hộ</span>
+        </div>
+        <div class="category-item">
+            <span class="icon">&#128663;</span>
+            <span>Nhà phố</span>
+        </div>
+        <div class="category-item">
+            <span class="icon">&#127969;</span>
+            <span>Biệt thự</span>
+        </div>
+        <div class="category-item">
+            <span class="icon">&#127758;</span>
+            <span>Đất nền</span>
+        </div>
+        <div class="category-item">
+            <span class="icon">&#128188;</span>
+            <span>Văn phòng</span>
+        </div>
+        <div class="category-item">
+            <span class="icon">&#128506;</span>
+            <span>Khu phức hợp</span>
+        </div>
+    </div>
+
+    
+    <section class="section">
+        <h2>Dự án nổi bật</h2>
+        <p>Chúng tôi tuyển chọn các dự án pháp lý rõ ràng, vị trí đắc địa, tiềm năng tăng giá cao.</p>
+
+        <div class="card-grid">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/439416/pexels-photo-439416.jpeg" alt="">
+                <div class="card-body">
+<div class="card-title">Văn Duy Riverside</div>
+                    <div class="card-meta">Villa · Căn hộ cao cấp</div>
+                    <p>Căn hộ ven sông chuẩn resort, tiện ích 5 sao, bàn giao hoàn thiện cao cấp.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg" alt="">
+                <div class="card-body">
+                    <div class="card-title">Văn Duy City</div>
+                    <div class="card-meta">TP. Hà   · Nhà phố, shophouse</div>
+                    <p>Khu đô thị thương mại – dịch vụ sầm uất, vị trí vàng giữa trung tâm mới.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.pexels.com/photos/439391/pexels-photo-439391.jpeg" alt="">
+                <div class="card-body">
+                    <div class="card-title">LVD Ocean Villa</div>
+                    <div class="card-meta">Vũng Tàu · Biệt thự biển</div>
+                    <p>Biệt thự nghỉ dưỡng hướng biển, thiết kế hiện đại, cam kết lợi nhuận cho thuê.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <section class="section">
+        <h2>Tin tức thị trường</h2>
+        <p>Cập nhật nhanh xu hướng, chính sách và phân tích chuyên sâu từ các chuyên gia.</p>
+        <ul>
+            <li>Xu hướng đầu tư bất động sản ven biển 2025.</li>
+            <li>Những điểm mới trong luật đất đai cần biết trước khi mua.</li>
+            <li>Bí quyết chọn căn hộ vừa ở vừa cho thuê hiệu quả.</li>
+        </ul>
+    </section>
+
+    <footer>
+        © 2025 LVD GROUP – Sàn giao dịch bất động sản cao cấp.
+    </footer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const guestArea  = document.getElementById("guestArea");
+    const userArea   = document.getElementById("userArea");
+    const userNameEl = document.getElementById("userNameShort");
+    const userPill   = document.getElementById("userPill");
+    const userMenu   = document.getElementById("userMenu");
+    const btnLogout  = document.getElementById("btnLogout");
+    const btnUserInfo = document.getElementById("btnUserInfo");
+
+   
+    let customerRaw = localStorage.getItem("lvdCustomer");
+    if (customerRaw) {
+        try {
+            const customer = JSON.parse(customerRaw);
+            const fullName = customer.name || "Khách hàng";
+            const shortName = fullName.split(" ")[fullName.split(" ").length - 1];
+
+          
+            if (guestArea) guestArea.style.display = "none";
+            if (userArea)  userArea.style.display  = "flex";
+            if (userNameEl) userNameEl.textContent = shortName;
+        } catch (e) {
+            console.error("Không đọc được lvdCustomer:", e);
+        }
+    }
+
+   
+    if (userPill && userMenu) {
+        userPill.addEventListener("click", function () {
+            if (userMenu.style.display === "block") {
+                userMenu.style.display = "none";
+            } else {
+                userMenu.style.display = "block";
+            }
+        });
+
+        
+        document.addEventListener("click", function (e) {
+            if (!userArea.contains(e.target)) {
+                userMenu.style.display = "none";
+            }
+        });
+    }
+
+   
+    if (btnUserInfo) {
+        btnUserInfo.addEventListener("click", function () {
+            const data = localStorage.getItem("lvdCustomer");
+            if (!data) {
+                alert("Chưa có thông tin khách hàng.");
+                return;
+            }
+            const c = JSON.parse(data);
+            alert(
+                "Tên: " + (c.name || "") +
+                "\nĐiện thoại: " + (c.phone || "") +
+                "\nEmail: " + (c.email || "") +
+                "\nĐịa chỉ: " + (c.address || "")
+            );
+        });
+    }
+
+   
+    if (btnLogout) {
+        btnLogout.addEventListener("click", function () {
+            localStorage.removeItem("lvdCustomer");
+            alert("Đã đăng xuất.");
+            window.location.reload();
+        });
+    }
+});
+</script>
+
+</body>
+</html>
+<script src="header.js"></script>

@@ -16,27 +16,16 @@
     </div>
 </div>
 
-<header>
-    <div class="logo">
-    <span class="logo-text">LVD GROUP</span>
-</div>
+<div id="header-container"></div>
 
-    <nav>
-        <ul>
-                <li><a href="trangchu.html" class="active">Trang chủ</a></li>
-                <li><a href="gioithieu.html">Giới thiệu</a></li>
-                <li><a href="duan.html">Dự án</a></li>
-                <li><a href="tintuc.html">Tin tức</a></li>
-                <li><a href="lienhe.html">Liên hệ</a></li>
-            </ul>
-    </nav>
+<script>
+fetch("header.html")
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("header-container").innerHTML = data;
+    });
+</script>
 
-    <div class="header-right">
-        <a href="dangnhap.html">Đăng nhập</a> |
-        <a href="dangky.html">Đăng ký</a>
-        <span class="search-icon">&#128269;</span>
-    </div>
-</header>
 
 <section class="hero">
     <div class="hero-inner">
@@ -50,7 +39,7 @@
         <div class="card">
             <img src="https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg" alt="">
             <div class="card-body">
-                <div class="card-title">Thị trường căn hộ khu Đông tăng tốc</div>
+                <div class="card-title">Thị trường căn hộ khu vinhomes smart city tăng giá</div>
                 <div class="card-meta">26/03/2025</div>
                 <p>Nhiều dự án hạ tầng lớn giúp bất động sản khu Đông tiếp tục bứt phá mạnh.</p>
             </div>
@@ -66,7 +55,7 @@
         <div class="card">
             <img src="https://images.pexels.com/photos/439416/pexels-photo-439416.jpeg" alt="">
             <div class="card-body">
-                <div class="card-title">Đầu tư đất nền vùng ven</div>
+                <div class="card-title">Đầu tư đất nền vùng ven biển</div>
                 <div class="card-meta">05/03/2025</div>
                 <p>Xu hướng dịch chuyển dòng vốn về các đô thị vệ tinh quanh TP.HCM.</p>
             </div>
@@ -80,3 +69,4 @@
 
 </body>
 </html>
+<script src="header.js"></script>
